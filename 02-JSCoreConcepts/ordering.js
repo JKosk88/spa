@@ -1,19 +1,14 @@
 const reverse = function(arr) {
-    arrReversed = [];
-    arr.forEach(item => arrReversed.push(item));
-    arrReversed.reverse();
-    return arrReversed;
+    return arr.reverse();
 }
 
 const sort = function(arr) {
-    arrSorted = [];
-    // ...
-    return arrSorted;
+    return arr.sort();
 }
 
 const even = function(arr) {
     let arrEven = [];
-    // ...
+    arr.map(item => item % 2 == 0 ? arrEven.push(item): null);
     return arrEven;
 }
 

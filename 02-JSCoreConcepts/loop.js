@@ -1,21 +1,18 @@
-console.log(sum(2));
-console.log(sum(6));
-console.log(sum(10));
-console.log(sum(14));
-
-let sum = (num) =>{
+function sumFor (num){
     for(i = 0; i < num; i++){
         console.log(i);
     };
+    // return;
+};
 
-    let j = 0;
-    while(j < num){
-        console.log(j);
-        j++;
+sumFor(10);
+
+function sumWhile (num){
+    let x = 0;
+    while (x < num){
+        console.log(x);
+        x++;
     };
 };
 
-console.log(sum(2));
-console.log(sum(6));
-console.log(sum(10));
-console.log(sum(14));
+sumWhile(8);
