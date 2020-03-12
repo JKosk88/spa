@@ -26,6 +26,9 @@
             let val = document.getElementsByName('item')[0].value;
             
             element.innerHTML = val;
+            $(element).on("dblclick", function(){
+                $(this).remove();
+            })
             document.getElementsByTagName('ol')[0].appendChild(element);
         }
 
