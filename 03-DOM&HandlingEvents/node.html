@@ -3,10 +3,38 @@
 	<head>
 		<title>Create DOM elements</title>
 		<meta charset="UTF-8">
+		<button onclick="createTable()">Create Table</button>
+		<style rel="stylesheet">
+			.table {
+				margin-top: 10px;
+				border-collapse: collapse;
+			}
+		</style>
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
+			function createTable(){
+
+				var val = 1;
+				var table = document.createElement('table');
+				table.className += 'table';
+				table.setAttribute("border", "2")
+				
+
+				for (i = 0; i < 2; i++){
+					var tr = document.createElement('tr');
+
+					for (j = 0; j < 2; j++){
+						var td = document.createElement('td');
+						td.style.padding = "10px 40px";
+						td.appendChild(document.createTextNode(val));
+						tr.appendChild(td);
+						val++;
+					}
+					table.appendChild(tr);
+				}
+				document.body.appendChild(table);
+			}
 			
 		</script>
 	</body>
