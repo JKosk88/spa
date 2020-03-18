@@ -15,7 +15,7 @@
 
 				var xobj = new XMLHttpRequest();
 				xobj.overrideMimeType("application/json");
-				xobj.open('GET', 'textFile.json', true);
+				xobj.open('GET', 'people.json', true);
 				xobj.onreadystatechange = function () {
 					if (xobj.readyState == 4 && xobj.status == "200") {
 						callback(xobj.responseText);
@@ -29,8 +29,19 @@
 				loadJSON(function(response) {
 					// Parse JSON string into object
 					var actual_JSON = JSON.parse(response);
-					console.log(actual_JSON);
-					console.log(response);
+
+                    for (let i = 0; i < actual_JSON.length; i++) {
+                        let name = actual_JSON[i].name;
+                        let surname = actual_JSON[i].surname;
+                        let email = actual_JSON[i].email;
+                        let age = actual_JSON[i].age;
+                        let country = actual_JSON[i].country;
+
+                        let newElement = document.createElement("p");
+                        newElement.setAttribute("id", i);
+                        newElement.innerText = `name: ${name}, surname: ${surname}, emal: ${email}, age: ${age}, country: ${country}, `
+                        
+                    }
 				});
 			}
 

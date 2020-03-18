@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ready States</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+        <h1>
+            Hi!
+        </h1>
+        <div>
+            <p>
+                USD:
+                <span id="usd">
+
+                </span>
+            </p>
+            <p>
+                GBP:
+                <span id="gbp">
+
+                </span>
+            </p>
+            <p>
+                EUR:
+                <span id="eur">
+
+                </span>
+            </p>
+        </div>
+        <script>
+            let req = new XMLHttpRequest();
+            let usd = 'http://api.nbp.pl/api/exchangerates/rates/a/usd/?format=json';
+            let eur = 'http://api.nbp.pl/api/exchangerates/rates/a/eur/?format=json';
+            let gbp = 'http://api.nbp.pl/api/exchangerates/rates/a/gbp/?format=json';
+            
+            function getData (url) {
+                req.open('GET', url, false);
+                req.send(null);
+                let res;
+                if (req.status === 200) {
+                    return JSON.parse(req.responseText).rates[0].mid;
+                } else {
+                    return null;
+                }
+            };
+
+            function changeText (id, url){
+                document.getElementById(id).innerText = getData(url);
+            }
+
+            document.addEventListener("DOMContentLoaded", function(){
+                changeText("eur", eur);
+                changeText("usd", usd);
+                changeText("gbp", gbp);
+            })
+        </script>
+    </body>
+</html>
