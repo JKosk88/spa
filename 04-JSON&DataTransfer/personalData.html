@@ -9,6 +9,9 @@
 		<p>Open a console and then click the button</p>
 		<input type="button" value="Display student's data" onclick="init()">
 		<p id="personalData"></p>
+		<ol id="list">
+
+		</ol>
 
 		<script>
 			function loadJSON(callback) {
@@ -27,20 +30,21 @@
 
 			function init() {
 				loadJSON(function(response) {
+					let list = document.getElementById("list");
+
 					// Parse JSON string into object
 					var actual_JSON = JSON.parse(response);
 
                     for (let i = 0; i < actual_JSON.length; i++) {
                         let name = actual_JSON[i].name;
-                        let surname = actual_JSON[i].surname;
-                        let email = actual_JSON[i].email;
-                        let age = actual_JSON[i].age;
+                        let surname = actual_JSON[i].surname.toUpperCase();
                         let country = actual_JSON[i].country;
 
-                        let newElement = document.createElement("p");
+                        let newElement = document.createElement("li");
                         newElement.setAttribute("id", i);
-                        newElement.innerText = `name: ${name}, surname: ${surname}, emal: ${email}, age: ${age}, country: ${country}, `
-                        
+                        newElement.innerText = `${name} ${surname}, ${country}`;
+
+						list.appendChild(newElement);
                     }
 				});
 			}
