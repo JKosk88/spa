@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student</title>
+    <meta charset="UTF-8">
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="190"></canvas>
+    <script>
+        let goldPriceArr = [];
+        let goldDates = [];
+
+
+        $.ajax({
+            method:'GET',
+            url: 'http://api.nbp.pl/api/cenyzlota/last/30/?format=json'
+        }).done(function (data){
+            $.each(data, function (k, v) {
+                goldPriceArr.push(v.cena);
+                goldDates.push(v.data);
+                drawChart(goldPriceArr, goldDates)
+            })
+        });
+
+        function drawChart(data, labels) {
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'gold prices',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)'
+                        ],
+                        borderWidth: 5,
+                        fill: false
+                    }]
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

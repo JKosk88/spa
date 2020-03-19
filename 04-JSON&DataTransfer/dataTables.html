@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table id="table">
+
+    </table>
+    <script>
+        let peopleArr = [];
+        $.getJSON('people.json', function (data) {
+            $.each(data, function (k, v) {
+                let personArr = [];
+                $.each(v, function (key, val) {
+                    personArr.push(val);
+                });
+                peopleArr.push(personArr);
+            });
+            console.log(peopleArr);
+
+        });
+
+        $(document).ready( function () {
+            $('#table').DataTable({
+                data: peopleArr,
+                columns: [
+                    { title: "name" },
+                    { title: "surname" },
+                    { title: "age" },
+                    { title: "country" },
+                    { title: "email" },
+                ]
+            });
+        } );
+    </script>
+</body>
+</html>
