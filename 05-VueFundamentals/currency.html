@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <table id="app" class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Currency</th>
+            <th scope="col">Code</th>
+            <th scope="col">Mid</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="rate in rates">
+            <td> {{ rate.currency }} </td>
+            <td> {{ rate.code }} </td>
+            <td> {{ rate.mid }} </td>
+        </tr>
+        </tbody>
+    </table>
+  
+  <script>
+    let URL = 'http://api.nbp.pl/api/exchangerates/tables/a?format=json';
+
+    $.ajax({
+        url: URL,
+        method: 'GET'
+    }).done(function (r) {
+        rates = r[0].rates;
+        makeVue(rates);
+    });
+
+    function makeVue(ratesData) {
+
+        new Vue({
+            el: '#app',
+            data: {
+                rates: ratesData
+            }
+        });
+
+    }
+  </script>
+
+</body>
+</html>
