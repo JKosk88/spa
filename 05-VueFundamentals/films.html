@@ -2,8 +2,29 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+  <table id="app" class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">Director</th>
+        <th scope="col">Budget</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="film in films">
+        <td scope="row"></td>
+        <td> {{ film.title }} </td>
+        <td> {{ film.year }} </td>
+        <td> {{ film.director }} </td>
+        <td> ${{ film.budget }} </td>
+      </tr>
+    </tbody>
+  </table>
   <script>
     var app = new Vue({
       el: '#app',
@@ -34,9 +55,8 @@
             budget: 6000000
           }
         ] 
-        }
       }
-    });
+    }); 
   </script>
 </body>
 </html>

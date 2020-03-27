@@ -4,6 +4,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app">
+      <b>{{ companyName }}</b><br>
+      {{ address }} <br>
+      {{ postcode }} {{ city }} <br>
+      tel. {{ landline }}, {{ mobile }} <br>
+      <a v-bind:href="web">
+        {{ web }}
+      </a>
+  </div>
+  <STYLE type="text/css">
+    div {
+      background: rgb(201, 201, 201); 
+      /* border: 2px;
+      border-color: blueviolet; */
+      padding: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      width:20%;
+      position:static;
+      text-align: center;
+    }
+  </STYLE>
   <script>
     var app = new Vue({
       el: '#app',
@@ -15,8 +37,14 @@
         landline: '22 345 90 21',
         mobile: '888 213 992',
         web: 'http://www.unikpol.pl'
+      },
+      computed:{
+        companyName: function () {
+          return this.company.toUpperCase();
+        }
       }
-    });
+
+      });
   </script>
 
 </body>

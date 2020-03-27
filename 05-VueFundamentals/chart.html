@@ -2,13 +2,21 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
 </head>
 <body>
+  <DIV id="app">
+    {{ x }}
+  </DIV>
+  
+  <canvas id="app" width="800" height="350"></canvas>
+
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        languagesPopularity: [
           {
             language: 'Python',
             popularity: 25.95
@@ -30,8 +38,47 @@
             popularity: 7.37
           }
         ] 
+      },
+      computed: {
+        languagesArr: function() { 
+          let lang = ['test'];
+          for (let i = 0; i < this.languagesPopularity.length; i++) {
+            lang.push(this.languagesPopularity[i].language);
+          }
+          return lang;
+        },
+        popularityArr: function(){
+          let popul = ['test'];
+          for (let i in this.languagesPopularity) {
+            popul.push(i.popularity);
+          }
+          return popul;
+        },
+        x: function() {
+          new Chart(document.getElementById("bar-chart"), {
+            type: 'bar',
+            data: {
+              labels: ['dsd'],
+              datasets: [
+                {
+                  label: "Popularity",
+                  // backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                  data: ['12']
+                }
+              ]
+            },
+            options: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: 'Popularity of programming languages'
+              }
+            }
+          });
+        }
       }
     });
+
   </script>
 </body>
 </html>

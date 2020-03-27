@@ -5,7 +5,17 @@
 </head>
 <body>
   <h1>Grades</h1>    
+  <div id="app">
+    <p>--------------------------<br>
+    Product: {{ product.name }} <br>
+    Unit price: {{ product.unitPrice }} zł <br>
+    Quantity: {{ product.quantity }} <br>
+    Amount: {{ product.quantity * product.unitPrice }} zł<br>
+    VAT Tax Rate: {{ product.VAT }} %<br>
+    ===============
+    </p>
 
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
