@@ -6,16 +6,49 @@
 </head>
 <body>
 <div id="app">
-    <datalist>
-        <option>tetete</option>
-        <option>bvcs</option>
-    </datalist>
+    <label for="name">Imię: </label>
+    <input type="text" id="name" v-model="name"> <br>
+
+    <label for="surname">Nazwisko: </label>
+    <input type="text" id="surname" v-model="surname"> <br>
+
+    <label for="age">Wiek: </label>
+    <input type="number" id="age" v-model="age"> <br>
+
+    <label><input type="radio" name="gender" v-model="gender" value="male">Mężczyzna</label>
+    <label><input type="radio" name="gender" v-model="gender" value="female">Kobieta</label>
+
+    <form action="">
+        <label>Wykształcenie: </label>
+        <input list="cars">
+        <datalist id="cars">
+            <select name="education" v-model="education">
+                <option value="brak"  v-model="education" selected>b</option>
+                <option value="podstawowe" v-model="education">p</option>
+                <option value="średnie" v-model="education">s</option>
+                <option value="wyższe" v-model="education">w</option>
+            </select>
+        </datalist>
+    </form>
+
+    <input type="checkbox" v-model="computerSkill">Obsługa komputera <br>
+    <input type="checkbox" v-model="drivingLicence">Prawo jazdy <br>
+    <input type="checkbox" v-model="creativity">Kreatywność <br>
+    <input type="checkbox" v-model="teamPlayer">Praca w zespole <br>
 </div>
 <script>
     var app = new Vue({
         el: '#app',
         data: {
-            selectedSubjects: []
+            name: '',
+            surname: '',
+            age: 0,
+            gender: null,
+            education: '',
+            computerSkill: false,
+            drivingLicence: false,
+            creativity: false,
+            teamPlayer: false
         }
     });
 </script>
