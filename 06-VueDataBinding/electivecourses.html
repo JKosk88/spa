@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<h1>Body Mass Index</h1>
+<div id="app">
+    <input type="checkbox" v-model="selectedSubjects" id="Math" value="Math">Math<br>
+    <input type="checkbox" v-model="selectedSubjects" id="IT" value="IT">IT<br>
+    <input type="checkbox" v-model="selectedSubjects" id="Economics" value="Economics">Economics<br>
+    <input type="checkbox" v-model="selectedSubjects" id="Databases" value="Databases">Databases<br>
+    <input type="checkbox" v-model="selectedSubjects" id="Programming" value="Programming">Programming<br>
+    <p>Selected: {{ selectedSubjects.length }}</p>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selectedSubjects: []
+        }
+    });
+</script>
+
+</body>
+</html>

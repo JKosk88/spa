@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <label for="name">Name:
+            <input type="text" id="name"><br>
+        </label>
+        <label for="surname">Surame:
+            <input type="text" id="surname"><br>
+        </label>
+        <label for="title">Title:
+            <input type="text" id="title"><br>
+        </label>
+        <button type="submit" v-on:click="showData">Save</button>
+
+    </div>
+
+
+<script>
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'book',
+        },
+        methods: {
+            showData: function () {
+                console.log(document.getElementById('name').value);
+                console.log(document.getElementById('surname').value);
+                console.log(document.getElementById('title').value);
+
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
