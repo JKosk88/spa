@@ -6,50 +6,152 @@
 </head>
 <body>
 <div id="app">
+<!--    name    -->
     <label for="name">Imię: </label>
     <input type="text" id="name" v-model="name"> <br>
 
+<!--    surname    -->
     <label for="surname">Nazwisko: </label>
     <input type="text" id="surname" v-model="surname"> <br>
-
+<!--    age    -->
     <label for="age">Wiek: </label>
     <input type="number" id="age" v-model="age"> <br>
 
+<!--    gender    -->
     <label><input type="radio" name="gender" v-model="gender" value="male">Mężczyzna</label>
     <label><input type="radio" name="gender" v-model="gender" value="female">Kobieta</label>
 
+<!--    education    -->
     <form action="">
-        <label>Wykształcenie: </label>
-        <input list="cars">
-        <datalist id="cars">
-            <select name="education" v-model="education">
-                <option value="brak"  v-model="education" selected>b</option>
-                <option value="podstawowe" v-model="education">p</option>
-                <option value="średnie" v-model="education">s</option>
-                <option value="wyższe" v-model="education">w</option>
-            </select>
-        </datalist>
+    <label>Wykształcenie: </label>
+    <select id="education" v-model="education" list="education">
+        <option v-for="education in educationList">{{ education }}</option>
+    </select>
     </form>
 
+<!--    additional skills    -->
     <input type="checkbox" v-model="computerSkill">Obsługa komputera <br>
     <input type="checkbox" v-model="drivingLicence">Prawo jazdy <br>
     <input type="checkbox" v-model="creativity">Kreatywność <br>
     <input type="checkbox" v-model="teamPlayer">Praca w zespole <br>
+
+<!--    buttons    -->
+    <button type="submit" @click="saveData">Save CV data</button>
+    <button type="submit" @click="loadData">Load CV data</button>
+
 </div>
+
 <script>
     var app = new Vue({
         el: '#app',
         data: {
             name: '',
             surname: '',
-            age: 0,
+            age: null,
             gender: null,
-            education: '',
             computerSkill: false,
             drivingLicence: false,
             creativity: false,
-            teamPlayer: false
+            teamPlayer: false,
+            education:'',
+            educationList:[
+                "brak",
+                "podstawowe",
+                "średnie",
+                "wyższe"
+            ]
+        },
+        methods: {
+            loadData: function () {
+                if (localStorage.name) {
+                    this.name = localStorage.name;
+                }
+                if (localStorage.surname) {
+                    this.surname = localStorage.surname;
+                }
+                if (localStorage.age) {
+                    this.age = localStorage.age;
+                }
+                if (localStorage.gender) {
+                    this.gender = localStorage.gender;
+                }
+                if (localStorage.education) {
+                    this.education = localStorage.education;
+                }
+                if (localStorage.drivingLicence === 'false') {
+                    this.drivingLicence = false;
+                } else if (localStorage.drivingLicence === 'true') {
+                    this.drivingLicence = true;
+                }
+                if (localStorage.creativity === 'false') {
+                    this.creativity = false;
+                } else if (localStorage.creativity === 'true') {
+                    this.creativity = true;
+                }
+                if (localStorage.computerSkill === 'false') {
+                    this.computerSkill = false;
+                    // this.computerSkill = localStorage.computerSkill;
+                } else if (localStorage.computerSkill === 'true') {
+                    this.computerSkill = true;
+                }
+                if (localStorage.teamPlayer === 'false') {
+                    this.teamPlayer = false;
+                } else if (localStorage.teamPlayer === 'true') {
+                    this.teamPlayer = true;
+                }
+            },
+            saveData: function (newName,
+                                newSurname,
+                                newAge,
+                                newEducation,
+                                newTeamPlayer,
+                                newComputerSkill,
+                                newCreativity,
+                                newDrivingLicence,
+                                newGender
+                        ) {
+
+                            localStorage.name = this.name;
+                            localStorage.surname = newSurname;
+                            localStorage.age = newAge;
+                            localStorage.education = newEducation;
+                            localStorage.teamPlayer = newTeamPlayer;
+                            localStorage.computerSkill = newComputerSkill;
+                            localStorage.creativity = newCreativity;
+                            localStorage.drivingLicence = newDrivingLicence;
+                            localStorage.gender = newGender;
+
+                        }
         }
+        // watch: {
+        //     name(newName) {
+        //         localStorage.name = newName;
+        //     },
+        //     surname(newSurname) {
+        //         localStorage.surname = newSurname;
+        //     },
+        //     age(newAge) {
+        //         localStorage.age = newAge;
+        //     },
+        //     education(newEducation) {
+        //         localStorage.education = newEducation;
+        //     },
+        //     teamPlayer(newTeamPlayer) {
+        //         localStorage.teamPlayer = newTeamPlayer;
+        //     },
+        //     computerSkill(newComputerSkill) {
+        //         localStorage.computerSkill = newComputerSkill;
+        //     },
+        //     creativity(newCreativity) {
+        //         localStorage.creativity = newCreativity;
+        //     },
+        //     drivingLicence(newDrivingLicence) {
+        //         localStorage.drivingLicence = newDrivingLicence;
+        //     },
+        //     gender(newGender) {
+        //         localStorage.gender = newGender;
+        //     }
+        // }
     });
 </script>
 

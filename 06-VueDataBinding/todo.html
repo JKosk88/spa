@@ -11,7 +11,7 @@
     <button type="button" @click="add()">Add</button>
     <h3>To Do List</h3>
     <ol>
-      <li v-for="todo in todos">{{ todo }}</li>
+      <li v-for="todo in todos" @dblclick="undo()">{{ todo }}</li>
     </ol>
   </div>
   <script>
@@ -24,6 +24,9 @@
       methods: {
         add: function() {
           this.todos.push(this.todo);
+        },
+        undo: function () {
+          this.todos.pop(this.todo);
         }
       }
     });
