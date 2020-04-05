@@ -90,7 +90,6 @@
                 }
                 if (localStorage.computerSkill === 'false') {
                     this.computerSkill = false;
-                    // this.computerSkill = localStorage.computerSkill;
                 } else if (localStorage.computerSkill === 'true') {
                     this.computerSkill = true;
                 }
@@ -100,16 +99,7 @@
                     this.teamPlayer = true;
                 }
             },
-            saveData: function (newName,
-                                newSurname,
-                                newAge,
-                                newEducation,
-                                newTeamPlayer,
-                                newComputerSkill,
-                                newCreativity,
-                                newDrivingLicence,
-                                newGender
-                        ) {
+            saveData: function () {
 
                             localStorage.name = this.name;
                             localStorage.surname = this.surname;
@@ -123,35 +113,6 @@
 
                         }
         }
-        // watch: {
-        //     name(newName) {
-        //         localStorage.name = newName;
-        //     },
-        //     surname(newSurname) {
-        //         localStorage.surname = newSurname;
-        //     },
-        //     age(newAge) {
-        //         localStorage.age = newAge;
-        //     },
-        //     education(newEducation) {
-        //         localStorage.education = newEducation;
-        //     },
-        //     teamPlayer(newTeamPlayer) {
-        //         localStorage.teamPlayer = newTeamPlayer;
-        //     },
-        //     computerSkill(newComputerSkill) {
-        //         localStorage.computerSkill = newComputerSkill;
-        //     },
-        //     creativity(newCreativity) {
-        //         localStorage.creativity = newCreativity;
-        //     },
-        //     drivingLicence(newDrivingLicence) {
-        //         localStorage.drivingLicence = newDrivingLicence;
-        //     },
-        //     gender(newGender) {
-        //         localStorage.gender = newGender;
-        //     }
-        // }
     });
 </script>
 
