@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="films">
+    <film_1></film_1>
+    <film_2></film_2>
+    <film_3></film_3>
+</div>
+
+</body>
+<script>
+    Vue.component('film_1', {
+        template: '<div><h3>Fast & Furious</h3><p>Vin Diesel, Justin Lin, James Wan, F. Gary Gray, John Singleton, Philip Atwell, David Leitch, Rob Cohen</p><p>2001</p></div>'
+    });
+
+    Vue.component('film_2', {
+        template: '<div><h3>The Green Mile</h3><p>Frank Darabont</p><p>2000</p></div>'
+    });
+
+    Vue.component('film_3', {
+        template: '<div><h3>The Shining</h3><p>Stanley Kubrick</p><p>1980</p></div>'
+    });
+
+    new Vue({ el: '#films' })
+</script>
+</html>

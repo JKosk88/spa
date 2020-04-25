@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="app">
+
+    <script type="text/x-template" id="item-template">
+        <ul>
+            Architektura von Neumanna
+            <li v-for="item in itemList"> {{ item }}</li>
+        </ul>
+    </script>
+
+
+</div>
+</body>
+<script>
+
+    new Vue({
+        el: '#app',
+        template: '#item-template',
+        data () {
+            return {
+                itemList: ["pamięć komputerowa", "jednostka sterująca", "jednostka arytmetyczno-logiczna", "urządzenia wejścia/wyjścia"]
+            }
+        }
+    })
+
+</script>
+</html>

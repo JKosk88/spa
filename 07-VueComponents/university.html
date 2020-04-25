@@ -2,11 +2,20 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
 </head>
 <body>
 
-  <h1>Cracow University of Economics</h1>
-  <p>31-510 Kraków, Rakowicka 27, POLAND</p>
+    <div id="university">
+        <university></university>
+    </div>
 
 </body>
+<script>
+    Vue.component('university', {
+        template: '<div><h1>Cracow University of Economics</h1><p>31-510 Kraków, Rakowicka 27, POLAND</p></div>'
+    });
+
+    new Vue({ el: '#university' })
+</script>
 </html>

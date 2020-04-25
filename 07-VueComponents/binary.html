@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+
+    <convert sample="8"></convert>
+    <convert sample="170"></convert>
+    <convert sample="204"></convert>
+    <convert sample="3855"></convert>
+
+</div>
+
+</body>
+<script>
+    Vue.component('convert', {
+        template: '<div> {{sample}} <button v-on:click="toBinary">Convert to binary</button><div v-show="binary"> {{ binaryNumber }} </div></div>',
+        props: ['sample'],
+        data: function () {
+            return {
+                binaryNumber: '',
+                binary: false
+            }
+        },
+        methods: {
+            toBinary: function () {
+                this.binaryNumber = parseInt(this.sample).toString(2);
+                this.binary = true;
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

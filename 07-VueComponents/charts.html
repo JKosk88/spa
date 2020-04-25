@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+
+    <chart num1="3" num2="2" num3="5" id="id-one"></chart>
+    <chart num1="1" num2="2" num3="3" id="id-two"></chart>
+
+</div>
+
+
+
+</body>
+<script>
+
+    Vue.component('chart', {
+        template: '<div>{{ num1 }}, {{ num2 }}, {{ num3 }} <button v-on:click="drawChart"> Draw chart </button> </div>',
+        props: ['num1', 'num2', 'num3', 'id'],
+        methods: {
+            drawChart: function () {
+                console.log(this.num1, this.num2, this.num3);
+                var element = document.createElement("canvas");
+                element.id = this.id;
+                document.getElementById("app").appendChild(element);
+                var ctx = element.getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ["first number", "second number", "third number"],
+                        datasets: [{
+                            label: this.id,
+                            data: [this.num1, this.num2, this.num3]
+                        }]
+                    },
+                });
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

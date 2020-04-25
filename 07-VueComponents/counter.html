@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+    <button-counter></button-counter>
+</div>
+
+<script type="text/x-template" id="buttonCounterTemplate">
+    <div>
+        <button v-on:click="count--">-</button>
+        {{ count }}
+        <button v-on:click="count++">+</button>
+    </div>
+</script>
+
+</body>
+<script>
+    Vue.component('button-counter', {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '#buttonCounterTemplate'
+    });
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</html>

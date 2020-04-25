@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <api num="1"></api>
+    <api num="10"></api>
+</div>
+
+</body>
+<script>
+    Vue.component('api', {
+        template: '<div>{{ curr }}: {{ rate }} <button v-on:click="apiFunction">Get rate</button></div>',
+        props: ['num'],
+        data: function () {
+            return {
+                rate: 0,
+                curr: ''
+            }
+        },
+        methods: {
+            apiFunction: function () {
+                fetch('https://api.nbp.pl/api/exchangerates/tables/A/?format=json')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        this.curr = data[0].rates[parseInt(this.num)].code;
+                        this.rate = data[0].rates[parseInt(this.num)].mid;
+                        console.log(data[0].rates[parseInt(this.num)].code)
+                    });
+           }
+       }
+    });
+
+    new Vue({
+        el: '#app'
+    })
+
+
+
+
+</script>
+</html>
